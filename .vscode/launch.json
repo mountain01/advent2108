@@ -8,10 +8,11 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${file}","localRoot": "${workspaceFolder}",
-      "remoteRoot": "${command:extension.vscode-wsl-workspaceFolder}",
-      "useWSL": true,
-      "outFiles": []
+      "program": "${file}",
+      // "localRoot": "${workspaceFolder}",
+      // "remoteRoot": "${command:extension.vscode-wsl-workspaceFolder}",
+      // "useWSL": true,
+      // "outFiles": []
     }
   ]
 }

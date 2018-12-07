@@ -19,21 +19,34 @@ function parseClaim(claim) {
 }
 
 function addToGrid(claim){
-  const [left,top] = claim.spacing.split(',');
-  const [w,h] = claim.size.split('x');
+  const [left,top] = claim.spacing.split(',').map(a=>+a);
+  const [w,h] = claim.size.split('x').map(a=>+a);
   for(let i = 0;i<w;i++){
     for (let k = 0; k < h; k++) {
-      cloth[w+i] = cloth[w+i] || [];
-      if(cloth[w+i][h+k]) {
-        cloth[w+i][h+k] = 'X'
+      cloth[left+i] = cloth[left+i] || [];
+      if(cloth[left+i][top+k]) {
+        cloth[left+i][top+k] = 'X'
       } else {
-        cloth[w+i][h+k] = claim.id;
+        cloth[left+i][top+k] = claim.id;
       }
     }
   }
 }
 
+function checkForX(){
+  let count = 0;
+  for (let i = 0; i < cloth.length; i++) {
+    const element = cloth[i];
+    for (let k = 0; k < element.length; k++) {
+      const spot = element[k];
+      count += spot === 'X'? 1:0;
+    }
+  }
+  console.log(count);
+}
+
 getInput().then(input => {
   const parsedInput = input.map(parseClaim);
-  addToGrid(parsedInput[0]);
+  parsedInput.forEach(addToGrid);
+  checkForX();
 });
