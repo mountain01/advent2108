@@ -49,4 +49,5 @@ getInput().then(input => {
   const parsedInput = input.map(parseClaim);
   parsedInput.forEach(addToGrid);
   checkForX();
+  console.log('hello');
 });

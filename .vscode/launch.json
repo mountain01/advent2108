@@ -7,6 +7,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Launch Program via WSL",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      // "useWSL":true
+      // "program": "${command:extension.vscode-wsl-workspaceFolder}/3/a/solution.js",
+      // "useWSL": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Launch Program",
       "program": "${file}",
       // "localRoot": "${workspaceFolder}",
