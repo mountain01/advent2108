@@ -6,6 +6,8 @@ async function getInput() {
   return input.split('\n');
 }
 
-getInput().then(input => {
+const {readInput} = require('../../util/input');
+
+readInput(__dirname).then(input => {
   console.log(input);
 });
