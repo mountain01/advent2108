@@ -13,11 +13,17 @@ async function doChallenge() {
 }
 
 function getTotal(node) {
-  let sum = node.meta.reduce((a, b) => a + b, 0);
-
-  return node.children.reduce((a, b) => {
-    return a + getTotal(b)
-  }, sum);
+  if(node.hasChildren()){
+    return node.meta.reduce((a,b)=>{
+      let val = 0;
+      if(b-1 < node.children.length){
+        val = getTotal(node.children[b-1])
+      }
+      return a + val;
+    },0);
+  } else {
+    return node.meta.reduce((a,b)=>a+b,0);
+  }
 }
 
 function createTree(input) {
@@ -50,5 +56,9 @@ class Node {
 
   addMeta(meta) {
     this.meta.push(meta);
+  }
+
+  hasChildren(){
+    return this.children.length > 0;
   }
 }
